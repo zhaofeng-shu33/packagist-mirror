@@ -27,11 +27,7 @@ trait GZip
      */
     public function encode(string $gzip):string
     {
-        if ($this->isGzip($gzip)) {
-            return $gzip;
-        }
-
-        return gzencode($gzip);
+        return $gzip;
     }
 
     /**
@@ -43,10 +39,6 @@ trait GZip
      */
     public function decode(string $gzip):string
     {
-        if ($this->isGzip($gzip)) {
-            return gzdecode($gzip);
-        }
-
         return $gzip;
     }
 

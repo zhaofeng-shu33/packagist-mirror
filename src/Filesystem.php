@@ -74,9 +74,7 @@ class Filesystem
         $fullPath = $this->getFullPath($path);
         $extension = pathinfo($fullPath, PATHINFO_EXTENSION);
 
-        if ($extension == 'json') {
-            return $path.'.gz';
-        }
+
 
         return $path;
     }
@@ -90,13 +88,6 @@ class Filesystem
      */
     protected function getLink(string $path):string
     {
-        $fullPath = $this->getFullPath($path);
-        $extension = pathinfo($fullPath, PATHINFO_EXTENSION);
-
-        if ($extension == 'gz') {
-            return substr($path, 0, -3);
-        }
-
         return $path;
     }
 
@@ -133,7 +124,7 @@ class Filesystem
             throw new Exception("Write file $path hash failed");
         }
 
-        $this->symlink($file);
+        // $this->symlink($file);
 
         return $this;
     }
@@ -247,7 +238,7 @@ class Filesystem
             $this->filesystem->rename($this->getGzName($from), $target);
         }, 250);
 
-        $this->symlink($target);
+        // $this->symlink($target);
         // remove old symlink
         $this->delete($from);
 
@@ -271,11 +262,6 @@ class Filesystem
         $file = $this->getGzName($path);
         if (file_exists($file)) {
             unlink($file);
-        }
-
-        $link = $this->getLink($path);
-        if (is_link($link)) {
-            unlink($link);
         }
 
         return $this;
