@@ -53,7 +53,6 @@ class Http
      */
     protected $config = [
         'base_uri' => '',
-        'headers' => ['Accept-Encoding' => 'gzip'],
         'decode_content' => false,
         'timeout' => 30,
         'connect_timeout' => 15,
