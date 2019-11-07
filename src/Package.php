@@ -106,9 +106,9 @@ class Package
 
         $this->mainJson = $this->http->getJson(self::MAIN);
         $this->mainJson->{'providers-url'} = "/phpcomposer/p/%package%$%hash%.json";
-        $this->mainJson->{'mirrors'} = new stdClass();
-        $this->mainJson->{'mirrors'}->{'dist-url'} = "/phpcomposer/dists/%package%/%reference%.%type%";
-        $this->mainJson->{'mirrors'}->{'preferred'} = true;
+        $this->mainJson->{'mirrors'} = array(new stdClass());
+        $this->mainJson->{'mirrors'}[0]->{'dist-url'} = "/phpcomposer/dists/%package%/%reference%.%type%";
+        $this->mainJson->{'mirrors'}[0]->{'preferred'} = true;
 
         return $this->mainJson;
     }
