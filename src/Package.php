@@ -105,7 +105,7 @@ class Package
         }
 
         $this->mainJson = $this->http->getJson(self::MAIN);
-
+        $this->mainJson["providers-url"] = "/phpcomposer/p/%package%$%hash%.json";
         return $this->mainJson;
     }
 
