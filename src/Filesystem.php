@@ -195,7 +195,7 @@ class Filesystem
      */
     public function has(string $path):bool
     {
-        return $this->hasFile($path) && $this->hasLink($path);
+        return $this->hasFile($path);
     }
 
     /**
